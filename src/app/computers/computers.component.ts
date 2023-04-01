@@ -1,0 +1,41 @@
+import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Computer } from '../model/computer.model';
+import { ComputerService } from '../services/computer.service';
+
+@Component({
+  selector: 'app-computers',
+  templateUrl: './computers.component.html',
+  styleUrls: ['./computers.component.css']
+})
+export class ComputersComponent {
+  computers = new MatTableDataSource<Computer>();
+  displayedColumns = ['id', 'brand', 'model', 'actions'];
+
+  constructor(private computerSvc: ComputerService) {
+    this.loadData();
+  }
+
+  loadData() {
+    this.computerSvc.getComputers().subscribe({
+      next: (list) => {
+        this.computers.data = list;
+      },
+      error: (err) => {
+        alert('Lo sentimos ocurrió un error');
+      }
+    });
+  }
+
+  deleteComputer(item: Computer) {
+    this.computerSvc.deleteComputer(item.id).subscribe({
+      next: () => {
+        this.loadData();
+      },
+      error: (err) => {
+        alert('Lo sentimos, ocurrió un error');
+      }
+    });
+  }
+
+}

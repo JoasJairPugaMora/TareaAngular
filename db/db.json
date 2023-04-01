@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Test",
+      "age": 12
+    }
+  ],
+  "computers": [
+    {
+      "id": 1,
+      "brand": "Lenovo",
+      "model": "H1M1"
+    },
+    {
+      "id": 2,
+      "brand": "HP",
+      "model": "Inspiron 5000"
+    },
+    {
+      "brand": "Huawei",
+      "model": "Matebook d15",
+      "id": 3
+    },
+    {
+      "brand": "Asus",
+      "model": "Zenbook",
+      "id": 4
+    }
+  ]
+}
